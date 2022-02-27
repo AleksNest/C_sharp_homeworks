@@ -75,7 +75,6 @@ Console.WriteLine("Прогнрамма вывода всех четных чи�
 Console.WriteLine("--------------------------------------------------");
 Console.WriteLine("введите число целое  N ");
 int N = Convert.ToInt32(Console.ReadLine());
-int M = Math.Abs(N);
 Console.WriteLine("ряд четных чисел:");
 if (N==0) Console.WriteLine(" N должно быть отличным от 0");
 else
