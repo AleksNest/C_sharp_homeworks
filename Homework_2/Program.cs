@@ -227,7 +227,7 @@ void fun_age (int year_1, int year_2, int month_1, int month_2, int day_1, int d
 {
 int age = 0;
 if ( year_2 > year_1)  
-   if ((month_2 == month_1) & (day_2 < day_1))
+   if ((month_2 < month_1) & (day_2 < day_1))
        age = year_2 - year_1 -1;
         else
         age = year_2 - year_1;
