@@ -38,16 +38,19 @@ Console.WriteLine("сумма цифр в числе  " + N + " = " + count);
 Console.WriteLine(" --------------------------------------------------------------------------------------------- ");
 Console.WriteLine(" Напишите программу, которая задаёт массив из 8 случайных целых чисел и выводит отсортированный по модулю массив.");
 Console.WriteLine(" --------------------------------------------------------------------------------------------- ");
+Console.WriteLine("введите диапозон случайных чисел ");
+int value1 = Convert.ToInt32(Console.ReadLine());
+int value2 = Convert.ToInt32(Console.ReadLine());
 
 int [] array = new int[8];
-Method_FillArray (array);
+Method_FillArray (array, value1, value2);
 
-void Method_FillArray (int[] array)                         // метод заполнения чвссива случайными числами
+void Method_FillArray (int[] array, int value_1, int value_2 )                         // метод заполнения массива случайными числами
 {
     int index =  0;
     while (index < array.Length)
     {
-    array[index] = new Random().Next(-1000,1000);     
+    array[index] = new Random().Next(value_1,value_2);     
     index++;
     }   
 }
@@ -100,6 +103,7 @@ Console.WriteLine("Введите десятичное число ");
 int number = Convert.ToInt32(Console.ReadLine());
 void Dvcod (int number)                                       // метод перевода десятичного числа в двоичный
 {
+    int num = number;
     string DvFigura1 = "";
     while (number >= 1)
     {
@@ -118,8 +122,58 @@ void Dvcod (int number)                                       // метод пе
     string DvFigura2 = new string(sDvFigura1);
     
     if (DvFigura1 == DvFigura2) 
-        Console.WriteLine ("десятичное число " + number + " = двоичному числу " + DvFigura2 + " - полиндром");
+        Console.WriteLine ("десятичное число " + num + " = двоичному числу " + DvFigura2 + " - полиндром");
     else
-        Console.WriteLine ("десятичное число " + number + " = двоичному числу " + DvFigura2 + " - не полиндром");
+        Console.WriteLine ("десятичное число " + num + " = двоичному числу " + DvFigura2 + " - не полиндром");
 }
 Dvcod (number);
+
+
+
+
+
+Console.WriteLine(" --------------------------------------------------------------------------------------------- ");
+Console.WriteLine(" Задача 3. Массив на 100 элементов задается случайными числамит от 1 до 99. Определите самый часто встречающиййся элемент в массиве. Если их несколько - вывести все.");
+Console.WriteLine(" --------------------------------------------------------------------------------------------- ");
+value1 = 1;
+value2= 99;
+int [] array1 = new int[100];
+Method_FillArray (array1, value1, value2);          // метод заполнение массива (выше прописан)
+PrintArray (array1);                                // метод распечатки массивыа выше прописан
+Selectionnum (array1);
+void Selectionnum (int[] arrayN)                         // метод сортировки элементов массива от мин значения к максимальному по модулю
+{
+    int L = arrayN.Length;
+    int kolMax = 1;
+    int numArray = arrayN[0];
+        
+    for (int i = 0; i < L - 1; i++ )
+    {
+        int count =1;
+        for (int j = i + 1; j < L; j++ )
+        {
+            if (arrayN[i] == (arrayN[j]))  count++;
+        }
+        if (count > kolMax)
+        {
+                kolMax = count;
+                numArray = arrayN[i];
+        }
+    }
+
+   for (int i = 0; i < L - 1; i++ )
+    {
+        int count =1;
+        for (int j = i + 1; j < L; j++ )
+        {
+            if (arrayN[i] == (arrayN[j]))  count++;
+        }
+            if (count == kolMax)
+        {
+            Console.WriteLine ("макс кол элементов массива c знвчением " +  arrayN[i]+  " =  " + kolMax);
+        }
+        
+    }
+}
+
+
